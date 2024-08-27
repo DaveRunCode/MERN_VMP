@@ -19,6 +19,8 @@ const corsOptions = {
     origin: function(origin, callback){
         if (dominiosPermitidos.indexOf(origin) !== -1){
             // El origen del request es permitido
+            console.log(`Origen de la solicitud: ${origin}`); // Logging para depuración
+            console.log(`Dominios permitidos: ${dominiosPermitidos}`); // Muestra los dominios permitidos
             callback(null, true)
         } else {
             callback (new Error('No permitido por CORS'))
@@ -35,4 +37,3 @@ const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, ()=> {
     console.log(`Servidor funcionando en el puerto ${PORT}`);
-});
